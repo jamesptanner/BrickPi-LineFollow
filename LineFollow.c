@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
 
-#define DEBUG
-
 // some useful defines that I am going to use
 
 #define DWORD int
@@ -79,10 +77,10 @@ void* SensorCapture(void* args)
 	while(!bShutdown)
 	{
 	//	printf("Updating Sensor Values\r\n");
-		printf("Light Sensor: %d\r\n",BrickPi.Sensor[LS_PORT]);
-		printf("Ultra Sensor: %d\r\n",BrickPi.Sensor[US_PORT]);
+	//	printf("Light Sensor: %d\r\n",BrickPi.Sensor[LS_PORT]);
+	//	printf("Ultra Sensor: %d\r\n",BrickPi.Sensor[US_PORT]);
 		BrickPiUpdateValues();
-		usleep(250000);
+		usleep(2500);
 	}
 	dwRunningThreads--;
 }
@@ -100,9 +98,9 @@ void Setup(void)
 	BrickPi.Timeout = 1000; 
 	  
 	BrickPi.SensorType[US_PORT] = TYPE_SENSOR_ULTRASONIC_CONT;
-	BrickPi.SensorType[LS_PORT] = TYPE_SENSOR_RAW;
+	BrickPi.SensorType[LS_PORT] = TYPE_SENSOR_COLOR_NONE;
 	BrickPi.SensorType[KS_PORT] = TYPE_SENSOR_TOUCH;
-	BrickPi.SensorType[NULL_PORT] = TYPE_SENSOR_RAW;
+	BrickPi.SensorType[NULL_PORT] = TYPE_SENSOR_COLOR_NONE;
 	bShutdown = FALSE;
 	  
 	result = BrickPiSetupSensors();
@@ -145,7 +143,7 @@ void CalibrateSensors()
 	dwMotorSteer = 0;
 	// calculate the mid point.
 	dwMidValue = (max+min)/2;
-	
+	printf("Max:%d Min:%d Mid:%d",max,min,dwMidValue);
 
 }
 
