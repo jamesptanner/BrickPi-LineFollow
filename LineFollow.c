@@ -109,7 +109,7 @@ void Setup(void)
 	threadResult(pthread_create(&tMovement, NULL, MotorControl, NULL));
 	threadResult(pthread_create(&tKillSwitch, NULL, KillSwitch, NULL));
 	threadResult(pthread_create(&tSensor, NULL, SensorCapture , NULL));
-	printf("Running Threads: %d", dwRunningThreads);
+	printf("Running Threads: %d\r\n", dwRunningThreads);
 }
 
 void Shutdown()
@@ -143,7 +143,7 @@ void CalibrateSensors()
 	dwMotorSteer = 0;
 	// calculate the mid point.
 	dwMidValue = (max+min)/2;
-	printf("Max:%d Min:%d Mid:%d",max,min,dwMidValue);
+	printf("Max:%d Min:%d Mid:%d\r\n",max,min,dwMidValue);
 
 }
 
@@ -156,7 +156,8 @@ void updateDrive()
 	// adjust steering.
 	dwMotorSteer = diff;
 	// adjust speed.
-	dwMotorPower = 100-diff;
+	dwMotorPower = 40;
+	printf("lCurval:%d diff:%d dwMotorSteer:%d dwMotorPower:%d\r\n",lCurval,diff,dwMotorSteer,dwMotorPower);
 	
 }
 
@@ -168,7 +169,7 @@ DWORD main(DWORD argc, char argv[])
 	while(!bShutdown)
 	{
 		updateDrive();
-		usleep(10000);
+		usleep(5000);
 	}
   
 	Shutdown();
