@@ -80,7 +80,7 @@ void* SensorCapture(void* args)
 	//	printf("Light Sensor: %d\r\n",BrickPi.Sensor[LS_PORT]);
 	//	printf("Ultra Sensor: %d\r\n",BrickPi.Sensor[US_PORT]);
 		BrickPiUpdateValues();
-		usleep(2500);
+		usleep(5000);
 	}
 	dwRunningThreads--;
 }
