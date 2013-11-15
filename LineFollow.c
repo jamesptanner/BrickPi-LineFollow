@@ -20,8 +20,8 @@
 #define KS_PORT PORT_3
 #define NULL_PORT PORT_4
 
-#define TURN_SCALE 40
-#define POWERSCALE 2
+#define TURN_SCALE 20
+#define POWERSCALE 40
 
 #define threadResult(tRes) if(tRes == 0) {dwRunningThreads++;} else {bShutdown = TRUE;}
 
@@ -156,7 +156,7 @@ void updateDrive()
 	// adjust steering.
 	dwMotorSteer = diff;
 	// adjust speed.
-	dwMotorPower = 40;
+	dwMotorPower = 100;
 	printf("lCurval:%d diff:%d dwMotorSteer:%d dwMotorPower:%d\r\n",lCurval,diff,dwMotorSteer,dwMotorPower);
 	
 }
