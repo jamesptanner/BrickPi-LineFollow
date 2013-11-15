@@ -44,8 +44,8 @@ void* MotorControl(void* args)
   while(!bShutdown)
   {
 	BrickPi.MotorSpeed[MOTORS] = dwMotorSteer * TURN_SCALE;
-	BrickPi.MotorSpeed[MOTORL] = dwMotorPower * POWERSCALE;
-	BrickPi.MotorSpeed[MOTORR] = dwMotorPower * POWERSCALE;
+	//BrickPi.MotorSpeed[MOTORL] = dwMotorPower * POWERSCALE;
+	//BrickPi.MotorSpeed[MOTORR] = dwMotorPower * POWERSCALE;
 	
 	usleep(2500);	
   }
