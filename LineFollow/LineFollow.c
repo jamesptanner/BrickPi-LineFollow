@@ -8,8 +8,8 @@
 #define TRUE 1
 #define FALSE 0 
 
-#include "tick.h"
-#include "BrickPi.h"
+#include "../tick.h"
+#include "../BrickPi.h"
 
 #define MOTORR	PORT_A
 #define MOTORL	PORT_B
