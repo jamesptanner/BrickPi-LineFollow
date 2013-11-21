@@ -11,12 +11,13 @@
 #include "tick.h"
 #include "BrickPi.h"
 
-#define	MOTORS	PORT_B
-#define MOTORR	PORT_C
-#define MOTORL	PORT_A
+#define MOTORR	PORT_A
+#define MOTORL	PORT_B
+#define MOTORNULL PORT_C
+#define MOTORNULL PORT_D
 
-#define US_PORT PORT_2
-#define LS_PORT PORT_1
+#define US_PORT PORT_1
+#define CS_PORT PORT_2
 #define KS_PORT PORT_3
 #define NULL_PORT PORT_4
 
@@ -37,20 +38,16 @@ pthread_t tMovement, tKillSwitch, tSensor;
 void* MotorControl(void* args)
 {
   
-  BrickPi.MotorEnable[MOTORS] = 1;
   BrickPi.MotorEnable[MOTORL] = 1;
   BrickPi.MotorEnable[MOTORR] = 1;
 	
   while(!bShutdown)
   {
-	BrickPi.MotorSpeed[MOTORS] = dwMotorSteer * TURN_SCALE;
-	BrickPi.MotorSpeed[MOTORL] = dwMotorPower * POWERSCALE;
-	BrickPi.MotorSpeed[MOTORR] = dwMotorPower * POWERSCALE;
-	
-	usleep(2500);	
+	BrickPi.MotorSpeed[MOTORL] = (dwMotorPower*POWERSCALE) + (dwMotorSteer*TURN_SCALE);
+	BrickPi.MotorSpeed[MOTORR] = (dwMotorPower*POWERSCALE) - (dwMotorSteer*TURN_SCALE);
+	usleep(250);	
   }
  
-  BrickPi.MotorEnable[MOTORS] = 0;
   BrickPi.MotorEnable[MOTORL] = 0;
   BrickPi.MotorEnable[MOTORR] = 0;
   dwRunningThreads--;
