@@ -111,7 +111,10 @@ void Setup(void)
 
 void Shutdown()
 {
-
+	BrickPi.SensorType[US_PORT] = TYPE_SENSOR_RAW;
+	BrickPi.SensorType[CS_PORT] = TYPE_SENSOR_RAW;
+	BrickPi.SensorType[KS_PORT] = TYPE_SENSOR_RAW;
+	BrickPi.SensorType[NULL_PORT] = TYPE_SENSOR_RAW;
 	while(dwRunningThreads)
 	{
 		printf("Threads Running: %d\r\n",dwRunningThreads);
