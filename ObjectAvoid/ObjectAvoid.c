@@ -144,13 +144,7 @@ void CalibrateSensors()
 
 }
 
-void updateDrive()
-{
 
-	dwMotorPower = 100;
-	printf("lCurval:%d diff:%d dwMotorSteer:%d dwMotorPower:%d\r\n",lCurval,diff,dwMotorSteer,dwMotorPower);
-	
-}
 
 DWORD main(DWORD argc, char argv[])
 {
