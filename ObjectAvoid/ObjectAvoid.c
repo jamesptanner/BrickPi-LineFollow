@@ -143,14 +143,11 @@ void CalibrateSensors()
 	printf("Max:%d Min:%d Mid:%d\r\n",max,min,dwMidValue);
 
 }
-
-
-
 DWORD main(DWORD argc, char argv[])
 {
 	Setup();
-  
-	CalibrateSensors();
+
+	//CalibrateSensors();
 	dwMotorPower = 100;
 	while(!bShutdown)
 	{
@@ -160,11 +157,14 @@ DWORD main(DWORD argc, char argv[])
 			dwMotorSteer = -40;
 			sleep(2);
 			dwMotorPower = 100;
-			dwMotorSteer = 0;			
-		
+			dwMotorSteer = 0;
+
 		}
+		printf("Senosr Val=%d\r\n",BrickPi.Sensor[US_PORT]);
+		usleep(2000);
+
 	}
-  
+
 	Shutdown();
 	return 0;
 
