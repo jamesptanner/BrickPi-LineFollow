@@ -125,12 +125,8 @@ void Shutdown()
 void CalibrateSensors()
 {
 
-	// swing the wheels to the left/right as far as possible.
-	dwMotorSteer = -128;
-	sleep(1);					//hacked in until i find a better way of doing this. Sorry motors :(
-	dwMotorSteer = 0;
-	// slowly swing the wheels back to the other side.
-	dwMotorSteer = 4;
+	// rotate swing the wheels back to the other side.
+	dwMotorSteer = 128;
 	// while that is happening take sensor readings and record the max and min values.
 	DWORD i, max=0, min=512;	
 	for(i = 0; i< 2000;i++)
