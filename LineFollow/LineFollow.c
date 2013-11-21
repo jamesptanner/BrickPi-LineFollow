@@ -74,7 +74,7 @@ void* SensorCapture(void* args)
 	while(!bShutdown)
 	{
 	//	printf("Updating Sensor Values\r\n");
-	//	printf("Light Sensor: %d\r\n",BrickPi.Sensor[LS_PORT]);
+	//	printf("Light Sensor: %d\r\n",BrickPi.Sensor[CS_PORT]);
 	//	printf("Ultra Sensor: %d\r\n",BrickPi.Sensor[US_PORT]);
 		BrickPiUpdateValues();
 		usleep(5000);
@@ -95,7 +95,7 @@ void Setup(void)
 	BrickPi.Timeout = 1000; 
 	  
 	BrickPi.SensorType[US_PORT] = TYPE_SENSOR_ULTRASONIC_CONT;
-	BrickPi.SensorType[LS_PORT] = TYPE_SENSOR_COLOR_NONE;
+	BrickPi.SensorType[CS_PORT] = TYPE_SENSOR_COLOR_NONE;
 	BrickPi.SensorType[KS_PORT] = TYPE_SENSOR_TOUCH;
 	BrickPi.SensorType[NULL_PORT] = TYPE_SENSOR_COLOR_NONE;
 	bShutdown = FALSE;
@@ -132,7 +132,7 @@ void CalibrateSensors()
 	DWORD i, max=0, min=512;	
 	for(i = 0; i< 2000;i++)
 	{
-		DWORD val = BrickPi.Sensor[LS_PORT];
+		DWORD val = BrickPi.Sensor[CS_PORT];
 		if(val>max) max = val;
 		if(val<min) min = val;		
 		usleep(2000);
@@ -147,7 +147,7 @@ void CalibrateSensors()
 void updateDrive()
 {
 	// take current sensor value.
-	long lCurval = BrickPi.Sensor[LS_PORT];
+	long lCurval = BrickPi.Sensor[CS_PORT];
 	// calculate difference from mid point.
 	DWORD diff = dwMidValue - lCurval; 
 	// adjust steering.
