@@ -153,14 +153,14 @@ DWORD main(DWORD argc, char argv[])
 	{
 		if (BrickPi.Sensor[US_PORT] < 20)
 		{
-			dwMotorPower = 100;
-			dwMotorSteer = -40;
+			dwMotorPower = -100;
+			dwMotorSteer = 40;
 			sleep(2);
 			dwMotorPower = 100;
 			dwMotorSteer = 0;
 
 		}
-		printf("Senosr Val=%d\r\n",BrickPi.Sensor[US_PORT]);
+		printf("Sensor Val=%d\r\n",BrickPi.Sensor[US_PORT]);
 		usleep(2000);
 
 	}
