@@ -154,7 +154,7 @@ DWORD main(DWORD argc, char argv[])
 		if (BrickPi.Sensor[US_PORT] < 20)
 		{
 			dwMotorPower = -100;
-			dwMotorSteer = 40;
+			dwMotorSteer = 200;
 			sleep(2);
 			dwMotorPower = 100;
 			dwMotorSteer = 0;
