@@ -148,15 +148,15 @@ DWORD main(DWORD argc, char argv[])
 	Setup();
 
 	//CalibrateSensors();
-	dwMotorPower = 100;
+	dwMotorPower = 200;
 	while(!bShutdown)
 	{
 		if (BrickPi.Sensor[US_PORT] < 20)
 		{
-			dwMotorPower = -100;
+			dwMotorPower = -200;
 			dwMotorSteer = 200;
 			sleep(2);
-			dwMotorPower = 100;
+			dwMotorPower = 200;
 			dwMotorSteer = 0;
 
 		}
