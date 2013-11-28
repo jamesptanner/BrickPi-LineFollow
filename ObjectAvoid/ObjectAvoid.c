@@ -21,8 +21,8 @@
 #define KS_PORT PORT_3
 #define NULL_PORT PORT_4
 
-#define TURN_SCALE 20
-#define POWERSCALE 40
+#define TURN_SCALE 2
+#define POWERSCALE 1
 
 #define threadResult(tRes) if(tRes == 0) {dwRunningThreads++;} else {bShutdown = TRUE;}
 

@@ -21,8 +21,8 @@
 #define KS_PORT PORT_3
 #define NULL_PORT PORT_4
 
-#define TURN_SCALE 20
-#define POWERSCALE 40
+#define TURN_SCALE 2.5
+#define POWERSCALE 1.5
 
 #define threadResult(tRes) if(tRes == 0) {dwRunningThreads++;} else {bShutdown = TRUE;}
 
@@ -77,7 +77,7 @@ void* SensorCapture(void* args)
 	//	printf("Light Sensor: %d\r\n",BrickPi.Sensor[CS_PORT]);
 	//	printf("Ultra Sensor: %d\r\n",BrickPi.Sensor[US_PORT]);
 		BrickPiUpdateValues();
-		usleep(5000);
+		usleep(250);
 	}
 	dwRunningThreads--;
 }
@@ -135,7 +135,7 @@ void CalibrateSensors()
 		DWORD val = BrickPi.Sensor[CS_PORT];
 		if(val>max) max = val;
 		if(val<min) min = val;		
-		usleep(2000);
+		usleep(800);
 	}
 	dwMotorSteer = 0;
 	// calculate the mid point.
@@ -166,7 +166,7 @@ DWORD main(DWORD argc, char argv[])
 	while(!bShutdown)
 	{
 		updateDrive();
-		usleep(5000);
+		usleep(1500);
 	}
   
 	Shutdown();
